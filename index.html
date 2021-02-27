@@ -1,24 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/jpg" href="/images/profile.jpg" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <meta
+      name="description"
+      content="Francisco Noel is a software engineer and a computer science Major."
+    />
     <title>Francisco Noel</title>
-</head>
-<body>
-    <!--Navigation Bar-->
-    <ul class="navigation">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Experience</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Services</a></li>
-      </ul>
+  </head>
+  <body>
+    <div id="hellobar-bar" class="regular closable">
+      <div class="hb-content-wrapper">
+        <div class="hb-text-wrapper">
+          <div class="hb-headline-text">
+            <p>
+              <span
+                >Lead Software Engineer and Founder at
+                <strong>3Linic</strong></span
+              >
+            </p>
+          </div>
+        </div>
+        <a
+          rel="noreferrer"
+          href="https://www.3linic.com"
+          target="_blank"
+          class="hb-cta hb-cta-button"
+        >
+          <div class="hb-text-holder">
+            <p>Visit</p>
+          </div>
+        </a>
+      </div>
+      <div class="hb-close-wrapper">
+        <a href="javascript:void(0);" class="icon-close">&#10006;</a>
+      </div>
+    </div>
 
-      <!--About Me-->
+    <a
+      href="javascript:void(0);"
+      class="icon-close"
+      onclick="$('#hellobar-bar').fadeOut()"
+      >&#10006;</a
+    >
 
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--About Me-->
+    <section id="welcome-section" class="welcome-section">
+      <h1>Francisco Noel</h1>
+      <p>Software Engineer / Computer Science Major</p>
+    </section>
+
+    <!--Projects section-->
+    <section id="projects" class="projects-section">
+      <h2 class="projects-section-header">My Projects</h2>
+
+      <div class="projects-grid">
+        <a
+          rel="noreferrer"
+          href="https://github.com/byfnoel/sorting-visualizer"
+          target="_blank"
+          class="project project-tile"
+        >
+          <img
+            class="project-image"
+            src="/images/sorting-algo-visualizer.png"
+            alt="project"
+          />
+          <p class="project-title">
+            <span class="code">&lt;</span>
+            Sorting Visualizer
+            <span class="code">&#47;&gt;</span>
+          </p>
+        </a>
+        <a
+          rel="noreferrer"
+          href="https://github.com/byfnoel/blackjack-game"
+          target="_blank"
+          class="project project-tile"
+        >
+          <img
+            class="project-image"
+            src="/images/blackjack.jpg"
+            alt="project"
+          />
+          <p class="project-title">
+            <span class="code">&lt;</span>
+            Blackjack Game
+            <span class="code">&#47;&gt;</span>
+          </p>
+        </a>
+        <a
+          rel="noreferrer"
+          href="https://github.com/byfnoel/credit-card-validator"
+          target="_blank"
+          class="project project-tile"
+        >
+          <img
+            class="project-image"
+            src="/images/creditcard-validator.jpg"
+            alt="project"
+          />
+          <p class="project-title">
+            <span class="code">&lt;</span>
+            Credit Card Validator
+            <span class="code">&#47;&gt;</span>
+          </p>
+        </a>
+        <a
+          rel="noreferrer"
+          href="https://github.com/byfnoel/caesar-cipher"
+          target="_blank"
+          class="project project-tile"
+        >
+          <img
+            class="project-image"
+            src="/images/caesar-cipher.jpg"
+            alt="project"
+          />
+          <p class="project-title">
+            <span class="code">&lt;</span>
+            Caesar Cipher
+            <span class="code">&#47;&gt;</span>
+          </p>
+        </a>
+        <a
+          rel="noreferrer"
+          href="https://github.com/byfnoel/python-random-quote"
+          target="_blank"
+          class="project project-tile"
+        >
+          <img
+            class="project-image"
+            src="/images/quote-generator.jpg"
+            alt="project"
+          />
+          <p class="project-title">
+            <span class="code">&lt;</span>
+            Python Quote Generator
+            <span class="code">&#47;&gt;</span>
+          </p>
+        </a>
+      </div>
+
+      <a
+        rel="noreferrer"
+        href="https://github.com/byfnoel/"
+        class="btn btn-show-all"
+        target="_blank"
+        >Show all<i class="fas fa-chevron-right"></i
+      ></a>
+    </section>
+  </body>
 </html>
