@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Francisco Noel">
+    <meta name="description" content="Francisco Noel's blog - Thoughts on software engineering, systems programming, and technology.">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="icon" type="image/png" href="images/profile.jpg">
+    <link rel="canonical" href="https://francisconoel.com/blog">
+    <title>Blog - Francisco Noel</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="name-title">
+                <h1><a href="index.html">Francisco Noel</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="https://www.linkedin.com/in/francisconoel">Experience</a></li>
+                    <li><a href="https://www.github.com/byfnoel">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="blog">
+            <h2>Blog</h2>
+            <p>Thoughts on software engineering, systems programming, and technology.</p>
+            <div id="blog-posts">
+                <p>Loading blog posts...</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Fetch blog posts from GitHub repository posts directory
+        async function fetchBlogPosts() {
+            const blogContainer = document.getElementById('blog-posts');
+            
+            try {
+                // Fetch the repository contents from the posts directory using GitHub API
+                const response = await fetch('https://api.github.com/repos/byfnoel/blog/contents/posts');
+                const contents = await response.json();
+                
+                // Filter for markdown files and sort by date (assuming filename format includes date)
+                const markdownFiles = contents
+                    .filter(item => item.name.endsWith('.md') && item.name !== 'README.md')
+                    .sort((a, b) => new Date(b.name) - new Date(a.name));
+                
+                if (markdownFiles.length === 0) {
+                    blogContainer.innerHTML = '<p>No blog posts found.</p>';
+                    return;
+                }
+                
+                // Create blog post list
+                const blogList = document.createElement('ul');
+                blogList.className = 'blog-list';
+                
+                for (const file of markdownFiles) {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    
+                    // Extract title from filename (remove .md extension and replace dashes/underscores with spaces)
+                    const title = file.name
+                        .replace('.md', '')
+                        .replace(/[-_]/g, ' ')
+                        .replace(/\b\w/g, l => l.toUpperCase());
+                    
+                    link.href = `https://github.com/byfnoel/blog/blob/main/posts/${file.name}`;
+                    link.textContent = title;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    
+                    listItem.appendChild(link);
+                    blogList.appendChild(listItem);
+                }
+                
+                blogContainer.innerHTML = '';
+                blogContainer.appendChild(blogList);
+                
+            } catch (error) {
+                console.error('Error fetching blog posts:', error);
+                blogContainer.innerHTML = '<p>Unable to load blog posts. <a href="https://github.com/byfnoel/blog/tree/main/posts" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>';
+            }
+        }
+        
+        // Load blog posts when page loads
+        document.addEventListener('DOMContentLoaded', fetchBlogPosts);
+    </script>
+</body>
+
+</html> 
