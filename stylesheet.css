@@ -207,6 +207,14 @@ h3 {
   color: var(--link-hover-color);
 }
 
+/* Blog date styling */
+.blog-date {
+  color: #b0b0b0;
+  font-weight: normal;
+  margin-right: 0.5rem;
+  font-size: 0.9em;
+}
+
 /* Blog page specific styling */
 .name-title h1 a {
   text-decoration: none;
