@@ -18,7 +18,7 @@ body {
 
 header {
   background-color: var(--header-bg);
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
 }
 
 .header-content {
@@ -63,7 +63,6 @@ header {
   }
 }
 
-
 /* For better browser support, add a fallback */
 @supports not (background-clip: text) {
   .name-title h1 {
@@ -92,7 +91,6 @@ nav ul li:first-child {
   margin-left: 0;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
@@ -131,25 +129,26 @@ a:hover {
 
 main {
   max-width: 800px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 0 1rem;
 }
-
 
 #about {
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .about-content {
   flex: 1;
+  min-width: 0;
 }
 
 .profile-picture {
-  width: 225px;
-  height: 225px;
+  width: 250px;
+  height: 250px;
   top: 32px;
   position: relative;
   border-radius: 0%;
@@ -158,8 +157,32 @@ main {
   vertical-align: middle;
 }
 
+/* Force text to wrap below image */
+@media (min-width: 800px) {
+  #about {
+    position: relative;
+  }
+
+  .profile-picture {
+    position: absolute;
+    right: 0;
+    top: 32px;
+  }
+
+  .about-content {
+    margin-right: 257px;
+    min-height: 225px;
+  }
+
+  /* Make text use full width when it flows below the image */
+  .about-content p:nth-child(n+4) {
+    margin-right: -257px;
+    width: calc(100% + 257px);
+  }
+}
+
 section {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 h3 {
@@ -239,6 +262,7 @@ h2 {
 /* Socials section styling */
 #contact {
   font-size: 0.9rem;
+  margin-top: -0.55rem;
 }
 
 #contact p {
